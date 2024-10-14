@@ -1,0 +1,66 @@
+﻿@model IEnumerable<RoleViewModel>
+@{
+    ViewData["Title"] = "All Roles";
+}
+
+
+
+
+<h1>All Roles</h1>
+<br />
+<br />
+
+<a asp-controller="Role" asp-action="Create" class=" btn btn-primary">Create new Role </a>
+<div class="row justify-content-center align align-items-center mt-5">
+    <form asp-action="Index" class="row col-8 offset-2">
+        <div class="col-8">
+            <input type="text" class="form-control" name="name" id="searchInp" placeholder="search By Name " />
+        </div>
+        <div class="col-4">
+            <input type="submit" value="search" class="btn btn-outline-success" />
+        </div>
+
+    </form>
+</div>
+
+
+
+ 
+ <br />
+<br />
+@{
+    if (Model.Count() > 0)
+    {
+        <table class="table table-striped table-hover mt-3">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(R=>R.Id)</th>
+                    <th>@Html.DisplayNameFor(R=>R.RoleName)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Role in Model)
+                {
+                    <tr>
+
+
+                        <td>@Html.DisplayFor(R=>Role.Id)</td>
+                        <td>@Html.DisplayFor(R=>Role.RoleName)</td>
+                        <Partial name="_ButtomPartial" model="@Role.Id" />
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+
+    }
+
+
+    else
+    {
+        <h3 class="alert alert-info text-center">There is no Roles</h3>
+    }
+}
+
+

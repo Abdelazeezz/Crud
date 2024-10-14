@@ -1,0 +1,27 @@
+﻿@model EmployeeViewModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Are You Sure To Delete This Employee </h1>
+
+<br/>
+<br/>
+<br/>
+
+
+  <form asp-action ="Delete">
+  <div asp-validation-summary="All"></div> @*// List The All Form Error Message*@
+
+     
+         <partial name="PartialViews/DetailsDeleteEmployeePartial" />
+
+         <input type="hidden" asp-for="ImageName" ></input>
+         <label asp-for="HireDate" class= "col-form-label"></label>
+         <input asp-for ="HireDate" class="form-control" readonly />
+       
+   
+<input type="submit" value ="Delete" Class="btn btn-danger"/>
+<a asp-action="Index" class ="btn btn-secondary">Cancel</a>
+
+</form>
